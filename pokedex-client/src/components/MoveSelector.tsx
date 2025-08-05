@@ -1,6 +1,7 @@
 import { useState, useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
-import { fetchMovesList, type Move } from '@/api/pokemon';
+import { fetchAllMoves, type Move } from '@/api/pokemon';
+import { getTypeColor, getCategoryColor } from '@/utils/pokemon';
 
 interface MoveSelectorProps {
   selectedMoves: Move[];
@@ -15,7 +16,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
 
   const { data: allMoves = [], isLoading, error } = useQuery<Move[]>({
     queryKey: ['moves'],
-    queryFn: fetchMovesList,
+    queryFn: fetchAllMoves,
   });
 
   // Get unique types and categories for filtering
@@ -80,29 +81,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
     setSelectedCategory('');
   };
 
-  const getTypeColor = (type: string) => {
-    const typeColors: Record<string, string> = {
-      fire: 'bg-red-100 text-red-800',
-      water: 'bg-blue-100 text-blue-800',
-      grass: 'bg-green-100 text-green-800',
-      electric: 'bg-yellow-100 text-yellow-800',
-      psychic: 'bg-purple-100 text-purple-800',
-      ice: 'bg-cyan-100 text-cyan-800',
-      dragon: 'bg-indigo-100 text-indigo-800',
-      dark: 'bg-gray-600 text-white',
-      fairy: 'bg-pink-100 text-pink-800',
-      fighting: 'bg-red-200 text-red-900',
-      poison: 'bg-purple-200 text-purple-900',
-      ground: 'bg-yellow-200 text-yellow-900',
-      flying: 'bg-indigo-200 text-indigo-900',
-      bug: 'bg-green-200 text-green-900',
-      rock: 'bg-yellow-300 text-yellow-900',
-      ghost: 'bg-purple-300 text-purple-900',
-      steel: 'bg-gray-300 text-gray-900',
-      normal: 'bg-gray-100 text-gray-800',
-    };
-    return typeColors[type] || 'bg-gray-100 text-gray-800';
-  };
+
 
   if (isLoading) {
     return (
@@ -157,11 +136,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
                   <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${getTypeColor(move.type)}`}>
                     {move.type}
                   </span>
-                  <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
-                    move.category === 'physical' ? 'bg-red-100 text-red-800' :
-                    move.category === 'special' ? 'bg-blue-100 text-blue-800' :
-                    'bg-gray-100 text-gray-800'
-                  }`}>
+                  <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${getCategoryColor(move.category)}`}>
                     {move.category}
                   </span>
                 </div>
@@ -264,11 +239,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
                           <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${getTypeColor(move.type)}`}>
                             {move.type}
                           </span>
-                          <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
-                            move.category === 'physical' ? 'bg-red-100 text-red-800' :
-                            move.category === 'special' ? 'bg-blue-100 text-blue-800' :
-                            'bg-gray-100 text-gray-800'
-                          }`}>
+                          <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${getCategoryColor(move.category)}`}>
                             {move.category}
                           </span>
                         </div>
