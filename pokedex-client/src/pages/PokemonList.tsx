@@ -92,7 +92,20 @@ function PokemonList() {
 
   return (
     <div className="p-8 min-h-screen bg-gray-50">
-      <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">Pokédex</h1>
+      <div className="max-w-7xl mx-auto mb-8">
+        <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
+          <h1 className="text-4xl font-bold text-gray-800">Pokédex</h1>
+          <Link 
+            to="/add" 
+            className="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
+          >
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 4v16m8-8H4" />
+            </svg>
+            Add Pokemon
+          </Link>
+        </div>
+      </div>
       
       {/* Search and Filter Controls */}
       <div className="max-w-7xl mx-auto mb-8">

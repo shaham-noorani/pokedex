@@ -79,11 +79,11 @@ function PokemonDetails() {
               <div className="grid grid-cols-2 gap-4 mb-6">
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold text-gray-700 mb-2">Height</h3>
-                  <p className="text-2xl font-bold text-gray-800">{pokemon.height / 10} m</p>
+                  <p className="text-2xl font-bold text-gray-800">{Math.floor(pokemon.height * 10) / 10} m</p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <h3 className="text-lg font-semibold text-gray-700 mb-2">Weight</h3>
-                  <p className="text-2xl font-bold text-gray-800">{pokemon.weight / 10} kg</p>
+                  <p className="text-2xl font-bold text-gray-800">{Math.floor(pokemon.weight * 10) / 10} kg</p>
                 </div>
               </div>
             </div>

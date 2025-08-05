@@ -72,3 +72,34 @@ export const fetchPokemonDetails = async (id: string): Promise<PokemonDetails> =
   
   return response.json();
 };
+
+export type CreatePokemonData = {
+  name: string;
+  sprite: string;
+  type_1: string;
+  type_2: string | null;
+  height: number;
+  weight: number;
+  hp: number;
+  attack: number;
+  defense: number;
+  sp_atk: number;
+  sp_def: number;
+  speed: number;
+};
+
+export const createPokemon = async (pokemonData: CreatePokemonData): Promise<PokemonDetails> => {
+  const response = await fetch(`${API_BASE_URL}/pokemon/`, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(pokemonData),
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Failed to create Pokemon: ${response.statusText}`);
+  }
+  
+  return response.json();
+};
