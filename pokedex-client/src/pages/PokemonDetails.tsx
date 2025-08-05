@@ -62,6 +62,10 @@ function PokemonDetails() {
                 src={pokemon.sprite} 
                 alt={pokemon.name} 
                 className="w-48 h-48 object-contain bg-gray-100 rounded-lg"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmB3wsaDEOe_tyGXvaryIjttZtSP7L0b-KoA&s';
+                }}
               />
             </div>
             

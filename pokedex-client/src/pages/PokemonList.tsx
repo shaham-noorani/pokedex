@@ -214,6 +214,10 @@ function PokemonList() {
                   src={pokemon.sprite} 
                   alt={pokemon.name} 
                   className="w-24 h-24 mx-auto object-contain"
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmB3wsaDEOe_tyGXvaryIjttZtSP7L0b-KoA&s';
+                  }}
                 />
                 <h2 className="text-lg font-semibold mt-2 text-center text-gray-800 capitalize">
                   {pokemon.name}
