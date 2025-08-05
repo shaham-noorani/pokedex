@@ -33,6 +33,10 @@ function PokemonList() {
           src="https://img.pokemondb.net/sprites/sword-shield/icon/pikachu.png" 
           alt="Pikachu" 
           className="w-12 h-12 object-contain"
+          onError={(e) => {
+            const target = e.target as HTMLImageElement;
+            target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmB3wsaDEOe_tyGXvaryIjttZtSP7L0b-KoA&s';
+          }}
         />
         <h1 className="text-4xl font-bold text-gray-800">Pokédex</h1>
       </div>
