@@ -119,6 +119,75 @@ function PokemonDetails() {
               </div>
             </div>
           </div>
+
+          {/* Moves */}
+          {pokemon.moves && pokemon.moves.length > 0 && (
+            <div className="mt-8">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">Moves</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {pokemon.moves.map((move) => (
+                  <div key={move.id} className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="text-lg font-semibold text-gray-800 capitalize">
+                        {move.name.replace('-', ' ')}
+                      </h4>
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
+                        move.category === 'physical' ? 'bg-red-100 text-red-800' :
+                        move.category === 'special' ? 'bg-blue-100 text-blue-800' :
+                        'bg-gray-100 text-gray-800'
+                      }`}>
+                        {move.category}
+                      </span>
+                    </div>
+                    
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className={`px-2 py-1 rounded-full text-xs font-medium capitalize ${
+                        move.type === 'fire' ? 'bg-orange-100 text-orange-800' :
+                        move.type === 'water' ? 'bg-blue-100 text-blue-800' :
+                        move.type === 'grass' ? 'bg-green-100 text-green-800' :
+                        move.type === 'electric' ? 'bg-yellow-100 text-yellow-800' :
+                        move.type === 'psychic' ? 'bg-purple-100 text-purple-800' :
+                        move.type === 'fire' ? 'bg-red-100 text-red-800' :
+                        move.type === 'fighting' ? 'bg-red-100 text-red-800' :
+                        move.type === 'poison' ? 'bg-purple-100 text-purple-800' :
+                        move.type === 'ground' ? 'bg-yellow-100 text-yellow-800' :
+                        move.type === 'flying' ? 'bg-indigo-100 text-indigo-800' :
+                        move.type === 'bug' ? 'bg-green-100 text-green-800' :
+                        move.type === 'rock' ? 'bg-yellow-100 text-yellow-800' :
+                        move.type === 'ghost' ? 'bg-purple-100 text-purple-800' :
+                        move.type === 'dragon' ? 'bg-purple-100 text-purple-800' :
+                        move.type === 'dark' ? 'bg-gray-100 text-gray-800' :
+                        move.type === 'steel' ? 'bg-gray-100 text-gray-800' :
+                        move.type === 'fairy' ? 'bg-pink-100 text-pink-800' :
+                        'bg-gray-100 text-gray-800'
+                      }`}>
+                        {move.type}
+                      </span>
+                    </div>
+                    
+                    <div className="grid grid-cols-2 gap-2 text-sm text-gray-600 mb-2">
+                      {move.power && (
+                        <div>
+                          <span className="font-medium">Power:</span> {move.power}
+                        </div>
+                      )}
+                      {move.accuracy && (
+                        <div>
+                          <span className="font-medium">Accuracy:</span> {move.accuracy}%
+                        </div>
+                      )}
+                    </div>
+                    
+                    {move.description && (
+                      <p className="text-sm text-gray-600 mt-2">
+                        {move.description}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </div>

@@ -1,13 +1,20 @@
-import os
-import django
+"""
+Moves data for the Pokedex application.
+This file contains all move data.
+"""
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pokedex.settings")
-django.setup()
-
-from pokemon.models import Move, Pokemon
-
+# All moves data
 moves_data = [
     # Normal type moves
+    {
+        "name": "Scratch",
+        "description": "Hard, pointed, sharp claws rake the target to inflict damage.",
+        "type": "normal",
+        "power": 40,
+        "effect": "No additional effect.",
+        "category": "physical",
+        "accuracy": 100,
+    },
     {
         "name": "Tackle",
         "description": "A physical attack in which the user charges and slams into the target with its whole body.",
@@ -245,12 +252,28 @@ moves_data = [
         "category": "special",
         "accuracy": 100,
     },
+    
+    # Rock type moves
+    {
+        "name": "Rock Throw",
+        "description": "The user picks up and throws a small rock at the target to inflict damage.",
+        "type": "rock",
+        "power": 50,
+        "effect": "No additional effect.",
+        "category": "physical",
+        "accuracy": 90,
+    },
+    
+    # Ice type moves
+    {
+        "name": "Ice Beam",
+        "description": "The target is struck with an icy-cold beam of energy. This may also leave the target frozen.",
+        "type": "ice",
+        "power": 90,
+        "effect": "10% chance to freeze the target.",
+        "category": "special",
+        "accuracy": 100,
+    },
+    
+    # Add more moves as needed
 ]
-
-def load_moves():
-    for data in moves_data:
-        Move.objects.get_or_create(name=data["name"], defaults=data)
-    print(f"Loaded {len(moves_data)} moves successfully!")
-
-if __name__ == "__main__":
-    load_moves()

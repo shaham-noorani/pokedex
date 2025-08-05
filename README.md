@@ -7,7 +7,7 @@ A full-stack Pokedex application built with Django REST Framework and React.
 - **Backend**: Django REST Framework
 - **Frontend**: React with TypeScript + Vite
 - **Styling**: Tailwind CSS
-- **Database**: SQLite (default Django)
+- **Database**: PostgreSQL
 
 ## Project Structure
 
@@ -24,29 +24,67 @@ pokedex/
 
 ### Backend (Django)
 
-1. Create a virtual environment:
+1. **Install PostgreSQL (if not already installed):**
+
+   On macOS with Homebrew:
+   ```bash
+   brew install postgresql
+   brew services start postgresql
+   ```
+
+   On Ubuntu/Debian:
+   ```bash
+   sudo apt update
+   sudo apt install postgresql postgresql-contrib
+   sudo service postgresql start
+   ```
+
+2. **Create a PostgreSQL superuser and database:**
+
+   Open the PostgreSQL prompt:
+   ```bash
+   psql postgres
+   ```
+
+   Then, in the psql shell, run:
+   ```sql
+   CREATE USER pokedex_user WITH PASSWORD 'yourpassword' SUPERUSER;
+   CREATE DATABASE pokedex_db OWNER pokedex_user;
+   \q
+   ```
+
+   Update your Django `settings.py` to use these credentials.
+
+3. **Create a virtual environment:**
    ```bash
    python -m venv venv
    source venv/bin/activate  # On Windows: venv\Scripts\activate
    ```
 
-2. Install dependencies:
+4. **Install dependencies:**
+
    ```bash
-   pip install django djangorestframework django-cors-headers
+   pip install django djangorestframework django-cors-headers psycopg2-binary
    ```
 
-3. Run migrations:
+   > **Note for Apple Silicon (ARM/M1/M2) Macs:**  
+   > If you encounter issues installing `psycopg2-binary`, try:
+   >
+   > ```bash
+   > ARCHFLAGS="-arch arm64" pip install django djangorestframework psycopg2-binary
+   > ```
+
+5. **Run migrations:**
    ```bash
    python manage.py migrate
    ```
 
-4. Load Pokemon data (if scripts are available):
+6. **Load Pokemon data:**
    ```bash
-   python manage.py shell < scripts/load_pokemon.py
-   python manage.py shell < scripts/load_moves.py
+   python scripts/load_data.py
    ```
 
-5. Start the Django server:
+7. **Start the Django server:**
    ```bash
    python manage.py runserver
    ```
@@ -86,19 +124,6 @@ The frontend will be available at `http://localhost:5173/`
 
 - Browse Pokemon list
 - View detailed Pokemon information
-- Responsive design with Tailwind CSS
-- Type-safe frontend with TypeScript
-
-## Development
-
-To contribute to this project:
-
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test both backend and frontend
-5. Submit a pull request
-
-## License
-
-This project is for educational purposes.
+- Search for Pokemon by name
+- Filter Pokemon by type
+- Sort Pokemon by name, number, or type

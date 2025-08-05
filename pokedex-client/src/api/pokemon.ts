@@ -1,3 +1,14 @@
+export type Move = {
+  id: number;
+  name: string;
+  description: string;
+  type: string;
+  power: number | null;
+  effect: string | null;
+  category: 'physical' | 'special' | 'status';
+  accuracy: number | null;
+};
+
 export type Pokemon = {
   id: number;
   name: string;
@@ -20,6 +31,7 @@ export type PokemonDetails = {
   sp_atk: number;
   sp_def: number;
   speed: number;
+  moves: Move[];
 };
 
 // Extended Pokemon type for list view with additional filterable fields
