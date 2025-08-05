@@ -394,7 +394,8 @@ function AddPokemon() {
                     alt={formData.name || 'Pokemon preview'} 
                     className="w-24 h-24 object-contain bg-white rounded border"
                     onError={(e) => {
-                      (e.target as HTMLImageElement).style.display = 'none';
+                      const target = e.target as HTMLImageElement;
+                      target.src = 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmB3wsaDEOe_tyGXvaryIjttZtSP7L0b-KoA&s';
                     }}
                   />
                   <div>
