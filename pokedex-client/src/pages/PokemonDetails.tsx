@@ -39,9 +39,20 @@ function PokemonDetails() {
   return (
     <div className="p-8 min-h-screen bg-gray-50">
       <div className="max-w-4xl mx-auto">
-        <Link to="/" className="text-blue-600 hover:text-blue-800 underline mb-6 inline-block">
-          ← Back to Pokédex
-        </Link>
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mb-6">
+          <Link to="/" className="text-blue-600 hover:text-blue-800 underline">
+            ← Back to Pokédex
+          </Link>
+          <Link 
+            to={`/pokemon/${id}/edit`}
+            className="bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-2 px-4 rounded-lg transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
+          >
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+            </svg>
+            Edit Pokemon
+          </Link>
+        </div>
         
         <div className="bg-white rounded-lg shadow-lg p-8">
           <div className="flex flex-col md:flex-row items-center md:items-start gap-8">

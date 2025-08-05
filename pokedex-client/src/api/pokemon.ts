@@ -86,6 +86,17 @@ export type CreatePokemonData = {
   sp_atk: number;
   sp_def: number;
   speed: number;
+  moves: number[]; // Array of move IDs
+};
+
+export const fetchMovesList = async (): Promise<Move[]> => {
+  const response = await fetch(`${API_BASE_URL}/moves/`);
+  
+  if (!response.ok) {
+    throw new Error(`Failed to fetch moves list: ${response.statusText}`);
+  }
+  
+  return response.json();
 };
 
 export const createPokemon = async (pokemonData: CreatePokemonData): Promise<PokemonDetails> => {
@@ -99,6 +110,22 @@ export const createPokemon = async (pokemonData: CreatePokemonData): Promise<Pok
   
   if (!response.ok) {
     throw new Error(`Failed to create Pokemon: ${response.statusText}`);
+  }
+  
+  return response.json();
+};
+
+export const updatePokemon = async (id: string, pokemonData: CreatePokemonData): Promise<PokemonDetails> => {
+  const response = await fetch(`${API_BASE_URL}/pokemon/${id}/`, {
+    method: 'PUT',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(pokemonData),
+  });
+  
+  if (!response.ok) {
+    throw new Error(`Failed to update Pokemon: ${response.statusText}`);
   }
   
   return response.json();
