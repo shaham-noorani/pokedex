@@ -167,6 +167,7 @@ function PokemonList() {
               {availableTypes.map(type => (
                 <button
                   key={type}
+                  type="button"
                   onClick={() => handleTypeToggle(type)}
                   className={`px-3 py-1 rounded-full text-sm font-medium transition-colors ${
                     selectedTypes.includes(type)
@@ -186,6 +187,7 @@ function PokemonList() {
               Showing {filteredAndSortedPokemon.length} of {pokemonList.length} Pokemon
             </p>
             <button
+              type="button"
               onClick={clearFilters}
               className="px-4 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
             >

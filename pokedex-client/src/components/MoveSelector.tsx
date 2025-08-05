@@ -144,6 +144,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
                     {move.name.replace('-', ' ')}
                   </h5>
                   <button
+                    type="button"
                     onClick={() => handleRemoveMove(move.id)}
                     className="text-red-600 hover:text-red-800 transition-colors"
                   >
@@ -214,6 +215,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
               <div className="flex items-end">
                 <button
                   onClick={clearFilters}
+                  type="button"
                   className="px-3 py-2 text-sm font-medium text-gray-600 hover:text-gray-800 border border-gray-300 rounded-md hover:bg-gray-50 transition-colors"
                 >
                   Clear Filters
@@ -228,6 +230,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
                 {availableTypes.map(type => (
                   <button
                     key={type}
+                    type="button"
                     onClick={() => handleTypeToggle(type)}
                     className={`px-2 py-1 rounded-full text-xs font-medium transition-colors capitalize ${
                       selectedTypes.includes(type)
@@ -278,6 +281,7 @@ function MoveSelector({ selectedMoves, onMovesChange, maxMoves = 4 }: MoveSelect
                         )}
                       </div>
                       <button
+                        type="button"
                         onClick={() => handleAddMove(move)}
                         className="ml-3 bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-md text-xs font-medium transition-colors"
                       >

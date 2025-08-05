@@ -1,7 +1,7 @@
 """
 Script to load all Pokemon and moves data into the database.
 This script will:
-1. Load all moves from moves_data.py
+1. Load all moves from moves.csv
 2. Load all Pokemon from pokemon.csv
 3. Assign moves to Pokemon based on the pokemon_moves dictionary
 """
@@ -19,12 +19,12 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "pokedex.settings")
 django.setup()
 
 from pokemon.models import Pokemon, Move
-from moves_data import moves_data
 from pokemon_data import pokemon_moves
-from csv_loader import load_pokemon_from_csv
+from csv_loader import load_pokemon_from_csv, load_moves_from_csv
 
 def load_moves():
-    """Load all moves from moves_data.py"""
+    """Load all moves from moves.csv"""
+    moves_data = load_moves_from_csv()
     for data in moves_data:
         Move.objects.get_or_create(name=data["name"], defaults=data)
     print(f"Loaded {len(moves_data)} moves successfully!")
