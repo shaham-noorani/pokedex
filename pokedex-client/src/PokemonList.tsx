@@ -28,7 +28,14 @@ function PokemonList() {
 
   return (
     <div className="p-8 min-h-screen bg-gray-50">
-      <h1 className="text-4xl font-bold text-center mb-8 text-gray-800">Pokédex</h1>
+      <div className="flex items-center justify-center gap-3 mb-8">
+        <img 
+          src="https://img.pokemondb.net/sprites/sword-shield/icon/pikachu.png" 
+          alt="Pikachu" 
+          className="w-12 h-12 object-contain"
+        />
+        <h1 className="text-4xl font-bold text-gray-800">Pokédex</h1>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
         {pokemonList.map(pokemon => (
           <Link 

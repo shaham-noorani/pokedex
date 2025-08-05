@@ -94,7 +94,14 @@ function PokemonList() {
     <div className="p-8 min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto mb-8">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4">
-          <h1 className="text-4xl font-bold text-gray-800">Pokédex</h1>
+          <div className="flex items-center gap-3">
+            <img 
+              src="https://img.pokemondb.net/sprites/sword-shield/icon/pikachu.png" 
+              alt="Pikachu" 
+              className="w-12 h-12 object-contain"
+            />
+            <h1 className="text-4xl font-bold text-gray-800">Pokédex</h1>
+          </div>
           <Link 
             to="/add" 
             className="bg-green-600 hover:bg-green-700 text-white font-medium py-3 px-6 rounded-lg transition-colors flex items-center gap-2 shadow-md hover:shadow-lg"
